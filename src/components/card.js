@@ -25,8 +25,15 @@ export const Card = () => {
                 key: '872630b5abe75b0e19757f5358faf6442e956eca572e1d8b807a3e2338fdd0dc/stage',
                 onCommand: (commandData) => {
                   if (commandData.command === 'getMenu') {
-                    setmainCard(commandData.data)
+                    setmainCard(commandData.data);
+                  }else if(commandData.command === 'showCard'){
+                      addCardHandler(commandData.data);
+                  }else if (commandData.command === 'openCard'){
+                      setIsModal(commandData.data)
+                  }else if(commandData.command === 'closeCard'){
+                      setIsModal(commandData.data);
                   }
+                  
                 }
             });
     }, []);
@@ -56,7 +63,6 @@ export const Card = () => {
                              </div>
                              <span className='text-muted'>{value.price}</span>
                          </div>
-                          <button className='mt-3 btn btn-outline-primary' onClick={()=>addCardHandler(value)}>Add to Card</button>
                        </div>
                    </div>
                ))}
